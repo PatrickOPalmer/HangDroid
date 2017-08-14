@@ -1,5 +1,6 @@
 package com.beginners.hangdroid;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,11 +11,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 public class GameActivity extends AppCompatActivity {
 
     String mword = "WORD";
 
     int mFailCounter = 0;
+    int mGuessedLetters = 0;
+    int mPoints = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,7 @@ public class GameActivity extends AppCompatActivity {
         EditText myEditText = (EditText) findViewById(R.id.editTextLetter);
 
         String letter = myEditText.getText().toString();
+        myEditText.setText("");
 
         Log.d("MYLOG","The letter is " + letter);
 
@@ -39,7 +46,6 @@ public class GameActivity extends AppCompatActivity {
             Toast.makeText(this, "Please Enter Letter", Toast.LENGTH_SHORT).show();
         }
 
-        myEditText.setText(null);
     }
 
     /**
@@ -58,6 +64,7 @@ public class GameActivity extends AppCompatActivity {
                 Log.d("MYLOG", "There was one match");
                 letterGuessed = true;
                 showLettersAtIndex(i, charIntroduced);
+                mGuessedLetters++;
             }
         }
 
@@ -65,17 +72,49 @@ public class GameActivity extends AppCompatActivity {
             letterFailed(Character.toString(charIntroduced));
         }
 
+        if (mGuessedLetters == mword.length()) {
+            mPoints++;  //Increase the points by one
+            //Clear the previous word
+            //Start the game again
+            clearScreen();
+        }
+
 
     }
 
+    public void clearScreen(){
+        TextView textViewFailed = (TextView) findViewById(R.id.lettersGuessedField);
+        textViewFailed.setText("");
+        mGuessedLetters = 0;
+        mFailCounter = 0;
+
+        LinearLayout layoutLetters = (LinearLayout) findViewById(R.id.layoutLetters);
+        for (int i = 0; i < layoutLetters.getChildCount(); i++) {
+            TextView currentTextView = (TextView) layoutLetters.getChildAt(i);
+            currentTextView.setText("_");
+        }
+
+        ImageView imageView = (ImageView) findViewById(R.id.imageView);
+        imageView.setImageResource(R.drawable.hangdroid_0);
+
+    }
+
+
+
+    /**
+     * This is for when a letter fails
+     * @param letterFailed, is the letter to add to the lettersGuessedField
+     */
     public void letterFailed(String letterFailed) {
         mFailCounter++;
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
-        TextView textView = (TextView) findViewById(R.id.lettersGuessedField);
+        TextView textViewFailed = (TextView) findViewById(R.id.lettersGuessedField);
 
-        String previousFail = textView.getText().toString();
+        String previousFail = textViewFailed.getText().toString();
 
-        textView.setText(previousFail + letterFailed);
+        //My initial guess was to use .append rather than .setText. It's shorter than
+        //getting the previous string, but I'm following the instructor.
+        textViewFailed.setText(previousFail + letterFailed);
 
 
         if ( mFailCounter == 1) {
@@ -89,8 +128,10 @@ public class GameActivity extends AppCompatActivity {
         } else if (mFailCounter == 5) {
             imageView.setImageResource(R.drawable.hangdroid_5);
         } else if (mFailCounter == 6) {
-            //TODO GAME OVER
-            imageView.setImageResource(R.drawable.game_over);
+            //Open a next Activity (screen) by creating a new intent, etc.
+            Intent gameOverIntent = new Intent(this,GameOverActivity.class);
+            gameOverIntent.putExtra("POINTS_ID", mPoints);
+            startActivity(gameOverIntent);
         }
         //imageView.setImage
     }
@@ -98,13 +139,11 @@ public class GameActivity extends AppCompatActivity {
     /**
      * Displaying a letter guessed by the user
      * @param position of the letter
-     * @param letterGuessed
+     * @param letterGuessed the letter that was guessed
      */
     public void showLettersAtIndex(int position, char letterGuessed) {
         LinearLayout layoutLetter = (LinearLayout) findViewById(R.id.layoutLetters);
-
         TextView textView = (TextView) layoutLetter.getChildAt(position);
-
         textView.setText(Character.toString(letterGuessed));
     }
 
