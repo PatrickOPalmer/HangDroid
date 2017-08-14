@@ -90,7 +90,6 @@ public class GameActivity extends AppCompatActivity {
         String randomWord = arrayWords[randomNumber];
 
         mWord = randomWord;
-        //TODO set random word
     }
 
     public void clearScreen(){
