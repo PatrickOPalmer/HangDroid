@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startMultiPlayerGame(View v) {
-        Intent myIntent = new Intent(this, GameActivity.class);
+        Intent myIntent = new Intent(this, MultiplayerActivity.class);
         startActivity(myIntent);
     }
 
