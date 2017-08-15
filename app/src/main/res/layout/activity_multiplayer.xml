@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:maxLength="10"
-        android:hint="Introduce word"
+        android:hint="Introduce WORD"
         android:id="@+id/editTextWord" />
 
     <Button
@@ -23,6 +23,7 @@
         android:layout_below="@id/editTextWord"
         android:layout_centerHorizontal="true"
         android:onClick="startMultiGame"
+        android:layout_marginTop="20dp"
         android:text="Play"/>
 
 </RelativeLayout>
