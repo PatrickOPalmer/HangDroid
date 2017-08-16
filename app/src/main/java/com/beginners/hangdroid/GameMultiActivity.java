@@ -23,7 +23,7 @@ public class GameMultiActivity extends AppCompatActivity {
         setContentView(R.layout.activity_multi_game);
 
         String wordSent = getIntent().getStringExtra("WORD_ID"); //To pass words to activities
-        Log.d("MYLOG",wordSent);
+        Log.d("MYLOG","The Wordsent is " + wordSent + " in GameMultiActivity line 26 ");
 
         mWord = wordSent;
 
@@ -40,7 +40,7 @@ public class GameMultiActivity extends AppCompatActivity {
         String letter = myEditText.getText().toString();
         myEditText.setText("");
 
-        Log.d("MYLOG","The letter is " + letter);
+        Log.d("MYLOG","The letter is " + letter + " in GameMultiActivity line 43");
 
         if (letter.length() == 1) {
             checkLetter(letter.toUpperCase());
@@ -63,7 +63,7 @@ public class GameMultiActivity extends AppCompatActivity {
         for (int i=0; i< mWord.length(); i++) {
             char charFromTheWord = mWord.charAt(i);
             if (charFromTheWord == charIntroduced) {
-                Log.d("MYLOG", "There was one match");
+                Log.d("MYLOG", "There was one match in GameMultiActivity, line 66");
                 letterGuessed = true;
                 showLettersAtIndex(i, charIntroduced);
                 mGuessedLetters++;
