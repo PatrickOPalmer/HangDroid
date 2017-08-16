@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/gameTitle"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:onClick="startSinglePlayerGame"
             android:text="Single Player" />
 
@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/button2"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:onClick="displayScores"
             android:text="Scores" />
 

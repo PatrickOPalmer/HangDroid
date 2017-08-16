@@ -51,7 +51,6 @@ public class GameActivity extends AppCompatActivity {
      * Checking if the letter introduced matches any letter in the word to guess
      * @param introducedLetter, letter introduced by the user
      */
-
     public void checkLetter(String introducedLetter) {
         char charIntroduced = introducedLetter.charAt(0);
 
@@ -109,8 +108,6 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-
-
     /**
      * This is for when a letter fails
      * @param letterFailed, is the letter to add to the lettersGuessedField
@@ -156,6 +153,5 @@ public class GameActivity extends AppCompatActivity {
         TextView textView = (TextView) layoutLetter.getChildAt(position);
         textView.setText(Character.toString(letterGuessed));
     }
-
 
 }
