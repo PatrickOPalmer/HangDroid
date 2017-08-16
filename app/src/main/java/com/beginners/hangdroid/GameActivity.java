@@ -19,7 +19,6 @@ public class GameActivity extends AppCompatActivity {
     int mGuessedLetters = 0;
     int mPoints = 0;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

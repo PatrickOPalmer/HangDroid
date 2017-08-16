@@ -27,7 +27,7 @@ public class GameMultiActivity extends AppCompatActivity {
 
         mWord = wordSent;
 
-        createTextView(wordSent);
+        createTextViews(wordSent);
     }
 
     /** Retrieving the letter introduced on the editText
@@ -100,7 +100,7 @@ public class GameMultiActivity extends AppCompatActivity {
     }
 
 
-    public void createTextView(String word)
+    public void createTextViews(String word)
     {
         LinearLayout layoutLetters = (LinearLayout) findViewById(R.id.layoutLetters);
 

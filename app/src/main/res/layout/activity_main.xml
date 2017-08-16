@@ -56,7 +56,7 @@
             android:layout_below="@+id/button1"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:onClick="startMultiPlayerGame"
+            android:onClick="startMultiGame"
             android:text="Multi Player" />
 
         <Button
