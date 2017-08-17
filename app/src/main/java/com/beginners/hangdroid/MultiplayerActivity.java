@@ -17,8 +17,10 @@ public class MultiplayerActivity extends AppCompatActivity {
 
     public void startMultiGame(View v) {
         EditText editText = (EditText) findViewById(R.id.editTextWord);
-        String wordToGuess = editText.getText().toString();
+        String wordToGuess = editText.getText().toString().toUpperCase();
 
+        editText.setText(""); //Clear out the text box
+        
         Intent myIntent = new Intent(this, GameMultiActivity.class);
         myIntent.putExtra("WORD_ID", wordToGuess);
 

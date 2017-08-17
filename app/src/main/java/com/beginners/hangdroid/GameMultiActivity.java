@@ -47,7 +47,6 @@ public class GameMultiActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Please Enter Letter", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     /**
@@ -77,8 +76,11 @@ public class GameMultiActivity extends AppCompatActivity {
         if (mGuessedLetters == mWord.length()) {
             mPoints++;  //Increase the points by one
             //Clear the previous word
-            //Start the game again
-            clearScreen();
+            Toast.makeText(this, "Congratulations! The Word was " + mWord, Toast.LENGTH_LONG).show();
+            finish(); //This finishes the activity and goes back
+
+            //Intent myIntent = new Intent(this,MultiplayerActivity.class);
+            //startActivity(myIntent);
         }
     }
 

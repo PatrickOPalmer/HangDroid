@@ -20,17 +20,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startMultiGame(View v) {
-       // EditText editText = (EditText) findViewById(R.id.editTextWord);
-        //String wordToGuess = editText.getText().toString();
-
         Intent myIntent = new Intent(this,MultiplayerActivity.class);
-        //myIntent.putExtra("WORD_ID", wordToGuess);
-
         startActivity(myIntent);
     }
 
-    public void displayScores(View v) {
-        Intent myIntent = new Intent(this, GameActivity.class);
+    public void openScores(View v) {
+        Intent myIntent = new Intent(this, ScoresActivity.class);
         startActivity(myIntent);
     }
 }
