@@ -1,11 +1,16 @@
 package com.beginners.hangdroid;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class GameOverActivity extends AppCompatActivity {
+
+    int mPoints;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,5 +21,24 @@ public class GameOverActivity extends AppCompatActivity {
 
         TextView textViewPoints = (TextView) findViewById(R.id.textViewPoints);
         textViewPoints.setText(String.valueOf(points));
+
+        mPoints = points;
+    }
+
+    public void saveScore(View v) {
+        SharedPreferences preferences = getSharedPreferences("MYPREFS", Context.MODE_PRIVATE);
+        //Name x Points \n NAME2 Y POINTS
+
+        EditText editText = (EditText) findViewById(R.id.editTextName);
+        String name = editText.getText().toString();
+
+        SharedPreferences.Editor editor = preferences.edit();
+
+        String previousScores = preferences.getString("SCORES", "");
+
+        editor.putString("SCORES", name + " " + mPoints + " POINTS\n" + previousScores);
+        editor.commit();  //Mandatory!
+
+        finish();
     }
 }

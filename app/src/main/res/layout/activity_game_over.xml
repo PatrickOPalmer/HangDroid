@@ -39,19 +39,20 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.65"
-            android:text="SAVE SCORE" />
+            android:text="SAVE SCORE"
+            android:onClick="saveScore"/>
 
         <EditText
-            android:id="@+id/editTextLetter"
+            android:id="@+id/editTextName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:layout_weight="0.29"
             android:hint="INSERT YOUR NAME"
             android:inputType="textPersonName"
             android:maxLength="21"
             android:textAlignment="center"
-            android:textSize="15sp"
-            android:layout_weight="0.29" />
+            android:textSize="15sp" />
 
 
     </LinearLayout>
